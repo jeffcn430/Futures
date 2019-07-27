@@ -1,6 +1,6 @@
 server.port: 8999
 logging:
-  file: futrues-lay-jpa/logs/log.log
+  file: logs/log.log
 #view
 spring:
   thymeleaf:

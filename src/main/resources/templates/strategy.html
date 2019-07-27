@@ -19,7 +19,8 @@
                 资金总量:
             </div>
             <div class="layui-input-inline layui-show-xs-block">
-                <input class="layui-input" style="width: 150px" name="capital" id="capital" th:value="${wallet.amount}" onchange="initTable()">
+                <input class="layui-input" style="width: 150px" name="capital" id="capital" th:value="${wallet.amount}"
+                       onchange="initTable()">
             </div>
             <!--            <div class="layui-input-inline layui-show-xs-block">-->
             <!--                单笔资金回撤:-->
@@ -38,9 +39,10 @@
                 <tr align="center">
                     <th rowspan="2" style="width: 80px">品种</th>
                     <th rowspan="2" style="width: 100px">最大开仓</th>
-                    <th colspan="6" align="center" position1="3">标准(3%)</th>
-                    <th colspan="6" align="center" position2="2">轻仓(2%)</th>
-                    <th colspan="6" align="center" position3="4">重仓(4%)</th>
+                    <th colspan="6" align="center" position1="6">重仓(止损后资金回撤6%)</th>
+                    <th colspan="6" align="center" position2="4">标准(止损后资金回撤4%)</th>
+                    <th colspan="6" align="center" position3="2">轻仓(止损后资金回撤2%)</th>
+
                 </tr>
                 <tr>
                     <th colspan="2">小止损</th>
@@ -143,32 +145,32 @@
                     <td>50</td>
                     <td position="position3"></td>
                 </tr>
-<!--                <tr>-->
-<!--                    <td price="25">白银</td>-->
-<!--                    <td margin="300"></td>-->
-<!--                    <td>10</td>-->
-<!--                    <td position="position1"></td>-->
-<!--                    <td>15</td>-->
-<!--                    <td position="position1"></td>-->
-<!--                    <td>20</td>-->
-<!--                    <td position="position1"></td>-->
-<!--                    <td>10</td>-->
-<!--                    <td position="position2"></td>-->
-<!--                    <td>15</td>-->
-<!--                    <td position="position2"></td>-->
-<!--                    <td>20</td>-->
-<!--                    <td position="position"></td>-->
-<!--                    <td>10</td>-->
-<!--                    <td position="position3"></td>-->
-<!--                    <td>15</td>-->
-<!--                    <td position="position3"></td>-->
-<!--                    <td>20</td>-->
-<!--                    <td position="position3"></td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td price="12.5">铜</td>-->
-<!--                    <td margin="300"></td>-->
-<!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td price="25">白银</td>-->
+                <!--                    <td margin="300"></td>-->
+                <!--                    <td>10</td>-->
+                <!--                    <td position="position1"></td>-->
+                <!--                    <td>15</td>-->
+                <!--                    <td position="position1"></td>-->
+                <!--                    <td>20</td>-->
+                <!--                    <td position="position1"></td>-->
+                <!--                    <td>10</td>-->
+                <!--                    <td position="position2"></td>-->
+                <!--                    <td>15</td>-->
+                <!--                    <td position="position2"></td>-->
+                <!--                    <td>20</td>-->
+                <!--                    <td position="position"></td>-->
+                <!--                    <td>10</td>-->
+                <!--                    <td position="position3"></td>-->
+                <!--                    <td>15</td>-->
+                <!--                    <td position="position3"></td>-->
+                <!--                    <td>20</td>-->
+                <!--                    <td position="position3"></td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td price="12.5">铜</td>-->
+                <!--                    <td margin="300"></td>-->
+                <!--                </tr>-->
                 <tr>
                     <td price="10">原油</td>
                     <td margin="300"></td>
@@ -242,9 +244,6 @@
             var num = 0;
 
             var position = $(this).attr("position");
-            console.log(position);
-            console.log($("th[" + position + "]").eq(0).attr(position));
-
 
             var percentage = $("th[" + position + "]").eq(0).attr(position);
             // 计算最接近止损比例的数量
@@ -270,7 +269,6 @@
             $(this).text(num + "(" + parseFloat(limit * price * num / $("#capital").val() * 100).toFixed(2) + "%)");
         });
     }
-
 
     initTable();
 </script>
