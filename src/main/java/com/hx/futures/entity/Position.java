@@ -1,10 +1,9 @@
 package com.hx.futures.entity;
 
-import com.hx.futures.entity.Teacher;
-import com.hx.futures.entity.Variety;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,14 +42,17 @@ public class Position {
     /**
      * 买卖方向
      */
+    @Column(nullable = false)
     private Integer bbi;
     /**
      * 数量
      */
+    @Column(nullable = false)
     private int number;
     /**
      * 建仓时间
      */
+    @Column(nullable = false)
     private LocalDateTime startTime;
     /**
      * 平仓时间
@@ -59,31 +61,36 @@ public class Position {
     /**
      * 开仓均价
      */
+    @Column(nullable = false, precision = 19, scale = 4)
     private BigDecimal startPoint;
     /**
      * 平仓均价
      */
+    @Column(precision = 19, scale = 4)
     private BigDecimal endPoint;
     /**
      * 止盈点位
      */
+    @Column(precision = 19, scale = 4)
     private BigDecimal limited = BigDecimal.ZERO;
     /**
      * 止损点位
      */
+    @Column(precision = 19, scale = 4)
     private BigDecimal stop = BigDecimal.ZERO;
     /**
      * 手续费
      */
-    private BigDecimal poundage;
+    @Column(nullable = false)
+    private BigDecimal poundage = BigDecimal.ZERO;
     /**
      * 盈亏
      */
     private BigDecimal loss;
-
     /**
      * 平仓状态
      */
+    @Column(nullable = false)
     private Integer status = 0;
 
     /**
@@ -93,29 +100,39 @@ public class Position {
     @JoinColumn(name = "teacherId", referencedColumnName = "id")
     private Teacher teacher;
 
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "platformId", referencedColumnName = "id")
+    private Platform platform;
+
     /**
      * 备注
      */
     private String remarks;
 
     /**
-     * 计算收益
+     * 计算平仓收益收益
      *
      * @return
      */
     public Position compute() {
-        // 设置
         this.status = 1;
-        this.poundage = this.variety.getPoundage();
+        this.poundage = variety.getPoundage();
 
+        // 若没有填写平仓盈亏则计算
         if (this.loss == null) {
-            System.out.println("空");
-        }else{
-            System.out.println("不空");
+            BigDecimal point;
+            if (bbi == 1) {
+                point = endPoint.subtract(startPoint);
+            } else {
+                point = startPoint.subtract(endPoint);
+            }
+
+            // 平仓盈亏计算公式
+            // (平仓点差/最小波动)*最小波动价值*开仓数量
+            this.loss = point.divide(variety.getVarietyBase().getMinPoint()).multiply(variety.getPrice()).multiply(new BigDecimal(this.number));
         }
         return this;
     }
-
 
 
 }

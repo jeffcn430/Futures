@@ -3,6 +3,7 @@ package com.hx.futures.entity;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,11 @@ public class Variety implements Serializable {
      * 保证金
      */
     private BigDecimal margin;
+    /**
+     * 基点价值
+     */
+    @Column(precision = 19, scale = 4)
+    private BigDecimal price;
     /**
      * 标准止损点数
      */

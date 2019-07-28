@@ -54,5 +54,5 @@ public interface IPositionService {
      */
     boolean integrity(Position position);
 
-    boolean finishPosition(Position position);
+    boolean finishPosition(Position position) throws FutrueException;
 }

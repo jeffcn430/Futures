@@ -23,4 +23,6 @@ public interface VarietyRepository extends JpaRepository<Variety, Integer> {
      * @return
      */
     List<Variety> findAllByPlatformId(Integer platformId);
+
+    Variety findByvarietyBaseIdAndPlatformId(Integer varietyBaseId, Integer platformId);
 }

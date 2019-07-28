@@ -63,7 +63,7 @@ public class PositionController {
     }
 
     @PostMapping("finishPosition")
-    public ResultData finishPosition(Position position) {
+    public ResultData finishPosition(Position position) throws FutrueException {
         this.positionService.finishPosition(position);
         return new ResultData();
     }
