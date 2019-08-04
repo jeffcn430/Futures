@@ -1,6 +1,9 @@
 package com.hx.futures.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,9 +18,13 @@ import java.math.BigDecimal;
 /**
  * 钱包
  */
-@Data
+
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +49,7 @@ public class Wallet {
     @JoinColumn(name = "platformId", referencedColumnName = "id")
     private Platform platform;
 
-    public void changeCash(BigDecimal amount){
+    public void changeCash(BigDecimal amount) {
         this.amount = this.amount.add(amount);
     }
 }

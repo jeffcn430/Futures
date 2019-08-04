@@ -1,6 +1,9 @@
 package com.hx.futures.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,9 +26,12 @@ import java.time.LocalDateTime;
  * @modified By：
  * @version: 1.0.0$
  */
-@Data
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Position {
     /**
      * 订单编号

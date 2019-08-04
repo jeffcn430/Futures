@@ -1,6 +1,9 @@
 package com.hx.futures.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,9 +26,12 @@ import java.time.LocalDateTime;
  * @modified By：
  * @version: 1.0.0$
  */
-@Data
 @Table
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Offset implements Serializable {
     /**
      * 订单编号
