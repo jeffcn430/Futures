@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -25,7 +26,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Wallet {
+public class Wallet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     /**
