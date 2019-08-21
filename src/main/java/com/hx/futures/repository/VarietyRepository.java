@@ -1,6 +1,5 @@
 package com.hx.futures.repository;
 
-
 import com.hx.futures.entity.Variety;
 import org.springframework.data.jpa.repository.JpaRepository;
 
