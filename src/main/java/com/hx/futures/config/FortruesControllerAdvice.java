@@ -1,7 +1,6 @@
 package com.hx.futures.config;
 
 import com.hx.futures.common.Constants;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -12,7 +11,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-@Slf4j
 @ControllerAdvice
 public class FortruesControllerAdvice {
     @InitBinder

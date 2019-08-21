@@ -1,6 +1,5 @@
 package com.hx.futures.service.impl;
 
-
 import com.hx.futures.entity.Variety;
 import com.hx.futures.repository.VarietyRepository;
 import com.hx.futures.service.IVarietyService;

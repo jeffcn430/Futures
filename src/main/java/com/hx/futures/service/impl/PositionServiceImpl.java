@@ -12,8 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 /**
  * 仓位逻辑实现类
  *
@@ -71,7 +69,6 @@ public class PositionServiceImpl implements IPositionService {
     }
 
     @Override
-    @Transactional
     public boolean finishPosition(Position position) throws FutrueException {
         // 获取品种信息
         Variety variety = this.varietyRepository.findByvarietyBaseIdAndPlatformId(position.getVariety().getId(), position.getPlatform().getId());

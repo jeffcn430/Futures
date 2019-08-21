@@ -1,10 +1,8 @@
 package com.hx.futures.service;
 
-
 import com.hx.futures.entity.Wallet;
 import com.hx.futures.exception.FutrueException;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 /**
@@ -34,6 +32,5 @@ public interface IWalletService {
      * @param poundage   手续费
      * @return
      */
-    @Transactional
     boolean offset(Integer userId, Integer platformId, BigDecimal loss, BigDecimal poundage) throws FutrueException;
 }

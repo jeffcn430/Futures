@@ -8,9 +8,6 @@ public class Constants {
     /** 默认时间格式 */
     public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
 
-
-
-
     // 资金流水类型
     /** 入金 */
     public static final int CASH_TYPE_IN = 1;
@@ -21,8 +18,9 @@ public class Constants {
     /** 删除订单冲销 */
     public static final int CASH_TYPE_WRITE_OFF = 4;
 
-
     //货币类型
+    /** 人民币 */
+    public static final int MONEY_TYPE_RMB = 0;
     /** 美元 */
     public static final int MONEY_TYPE_USD = 1;
     /** 欧元 */
