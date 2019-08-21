@@ -24,5 +24,11 @@ public interface VarietyRepository extends JpaRepository<Variety, Integer> {
      */
     List<Variety> findAllByPlatformId(Integer platformId);
 
+    /**
+     * 通过品种基础id和平台获取品种信息
+     * @param varietyBaseId 品种基础id
+     * @param platformId 平台id
+     * @return
+     */
     Variety findByvarietyBaseIdAndPlatformId(Integer varietyBaseId, Integer platformId);
 }

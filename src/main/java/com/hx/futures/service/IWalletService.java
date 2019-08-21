@@ -2,8 +2,10 @@ package com.hx.futures.service;
 
 import com.hx.futures.entity.Wallet;
 import com.hx.futures.exception.FutrueException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * 钱包逻辑接口类
@@ -28,9 +30,12 @@ public interface IWalletService {
      *
      * @param userId     用户id
      * @param platformId 平台id
+     * @param moneyType
      * @param loss       平仓盈亏
      * @param poundage   手续费
      * @return
+     * @throws FutrueException
      */
-    boolean offset(Integer userId, Integer platformId, BigDecimal loss, BigDecimal poundage) throws FutrueException;
+    @Transactional
+    boolean offset(Integer userId, Integer platformId, int projectId, int moneyType, BigDecimal loss, BigDecimal poundage, LocalDateTime time) throws FutrueException;
 }

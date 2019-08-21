@@ -54,5 +54,11 @@ public interface IPositionService {
      */
     boolean integrity(Position position);
 
+    /**
+     *
+     * @param position
+     * @return
+     * @throws FutrueException
+     */
     boolean finishPosition(Position position) throws FutrueException;
 }

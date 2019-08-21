@@ -6,6 +6,7 @@ import com.hx.futures.exception.FutrueException;
 import com.hx.futures.repository.PositionRepository;
 import com.hx.futures.repository.VarietyRepository;
 import com.hx.futures.service.IPositionService;
+import com.hx.futures.service.IWalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +35,12 @@ public class PositionServiceImpl implements IPositionService {
      */
     @Autowired
     private VarietyRepository varietyRepository;
+
+    /**
+     * 钱包逻辑类
+     */
+    @Autowired
+    private IWalletService walletService;
 
     @Override
     public Page<Position> positionList(Integer page, Integer size) throws FutrueException {
@@ -78,7 +85,12 @@ public class PositionServiceImpl implements IPositionService {
 
         position.setVariety(variety);
 
+        // 计算做单盈亏并保存到数据库
         this.positionRepository.save(position.compute());
+
+        // 修改钱包金额
+        int moneyType = position.getVariety().getVarietyBase().getMoneyType();
+        this.walletService.offset(1, 1, position.getId(), moneyType, position.getLoss(), position.getPoundage(), position.getEndTime());
         return true;
     }
 }

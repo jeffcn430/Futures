@@ -15,8 +15,10 @@ public class Constants {
     public static final int CASH_TYPE_OUT = 2;
     /** 平仓 */
     public static final int CASH_TYPE_OFFSET = 3;
+    /** 平仓手续费 */
+    public static final int CASH_TYPE_OFFSET_POUNDAGE = 4;
     /** 删除订单冲销 */
-    public static final int CASH_TYPE_WRITE_OFF = 4;
+    public static final int CASH_TYPE_WRITE_OFF = 5;
 
     //货币类型
     /** 人民币 */

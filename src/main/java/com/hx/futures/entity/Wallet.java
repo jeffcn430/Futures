@@ -50,7 +50,29 @@ public class Wallet implements Serializable {
     @JoinColumn(name = "platformId", referencedColumnName = "id")
     private Platform platform;
 
-    public void changeCash(BigDecimal amount) {
-        this.amount = this.amount.add(amount);
+    /**
+     * 修改资金
+     *
+     * @param amount 金额
+     * @param isAdd  是否增加
+     */
+    public void changeCash(BigDecimal amount, boolean isAdd) {
+        if (isAdd) {
+            this.amount = this.amount.add(amount);
+        } else {
+            this.amount = this.amount.subtract(amount);
+        }
+    }
+
+    /**
+     * 平仓后修改金额
+     *
+     * @param amount
+     * @param poundage
+     */
+    public Wallet changeCash4Offset(BigDecimal amount, BigDecimal poundage) {
+        this.changeCash(amount, true);
+        this.changeCash(poundage, false);
+        return this;
     }
 }

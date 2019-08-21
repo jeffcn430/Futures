@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WallerDetail implements Serializable {
+public class WalletDetail implements Serializable {
     /**
      * 流水id
      */
@@ -51,7 +51,7 @@ public class WallerDetail implements Serializable {
      */
     private LocalDateTime createTime;
 
-    public WallerDetail(Integer type, BigDecimal cash, Integer projectId, LocalDateTime time, BigDecimal poorCapital) {
+    public WalletDetail(Integer type, BigDecimal cash, Integer projectId, LocalDateTime time, BigDecimal poorCapital) {
         this.type = type;
         this.cash = cash;
         this.projectId = projectId;
